@@ -1,4 +1,6 @@
 import AlertaConfig from './AlertaConfig'
+import DiscordConfig from './DiscordConfig'
+import DiscordConfigs from './DiscordConfigs'
 import HipChatConfig from './HipChatConfig'
 import KafkaConfig from './KafkaConfig'
 import OpsGenieConfig from './OpsGenieConfig'
@@ -16,6 +18,8 @@ import KafkaConfigs from './KafkaConfigs'
 
 export {
   AlertaConfig,
+  DiscordConfig,
+  DiscordConfigs,
   HipChatConfig,
   KafkaConfig,
   OpsGenieConfig,

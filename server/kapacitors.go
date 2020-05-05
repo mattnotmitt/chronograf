@@ -387,6 +387,10 @@ func newAlertResponse(task *kapa.Task, srcID, kapaID int) *alertResponse {
 		}
 	}
 
+	if res.AlertNodes.Discord == nil {
+		res.AlertNodes.Discord = []*chronograf.Discord{}
+	}
+
 	if res.AlertNodes.Email == nil {
 		res.AlertNodes.Email = []*chronograf.Email{}
 	}

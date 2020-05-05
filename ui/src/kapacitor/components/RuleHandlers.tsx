@@ -32,6 +32,7 @@ interface Props {
 
 interface HandlerKind {
   alerta?: number
+  discord?: number
   hipchat?: number
   httppost?: number
   influxdb?: number
@@ -269,6 +270,8 @@ class RuleHandlers extends PureComponent<Props, State> {
     const configType: AlertTypes = _.get(handler, 'type')
     switch (configType) {
       case AlertTypes.slack:
+        return _.get(handler, 'workspace') || 'default'
+      case AlertTypes.discord:
         return _.get(handler, 'workspace') || 'default'
       case AlertTypes.kafka:
         return _.get(handler, 'id') || _.get(handler, 'cluster')

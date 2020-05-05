@@ -133,6 +133,7 @@ func Test_KapacitorRulesGet(t *testing.T) {
 						OpsGenie2:  []*chronograf.OpsGenie{},
 						Talk:       []*chronograf.Talk{},
 						Kafka:      []*chronograf.Kafka{},
+						Discord:    []*chronograf.Discord{},
 					},
 				},
 			},

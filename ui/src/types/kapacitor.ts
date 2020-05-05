@@ -280,6 +280,7 @@ export interface FieldsFromConfigAlerts {
   talk: string[]
   telegram: string[]
   victorOps: string[]
+  discord: string[]
 }
 
 export interface FieldsFromAllAlerts extends FieldsFromConfigAlerts {
@@ -320,6 +321,20 @@ export interface AlertaProperties {
   origin: string
   token: string
   url: string
+  enabled: boolean
+}
+
+export interface DiscordProperties {
+  url: string
+  username: string
+  'avatar-url': string
+  'embed-title': string
+  timestamp: boolean
+  'ssl-ca': string
+  'ssl-cert': string
+  'ssl-key': string
+  'insecure-skip-verify': boolean
+  workspace?: string
   enabled: boolean
 }
 
@@ -417,6 +432,7 @@ export interface VictorOpsProperties {
 
 export type ServiceProperties =
   | AlertaProperties
+  | DiscordProperties
   | HipChatProperties
   | KafkaProperties
   | OpsGenieProperties

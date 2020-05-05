@@ -11,6 +11,7 @@ import {
 export enum AlertTypes {
   seperator = '',
   alerta = 'alerta',
+  discord = 'discord',
   hipchat = 'hipchat',
   httppost = 'httppost',
   influxdb = 'influxdb',
@@ -36,6 +37,7 @@ export enum AlertTypes {
 
 export enum AlertDisplayText {
   alerta = 'Alerta',
+  discord = 'Discord',
   hipchat = 'HipChat',
   kafka = 'Kafka',
   opsgenie = 'OpsGenie',
@@ -53,6 +55,7 @@ export enum AlertDisplayText {
 
 export const SupportedServices: string[] = [
   'alerta',
+  'discord',
   'hipchat',
   'kafka',
   'opsgenie',
@@ -216,6 +219,7 @@ export const MAP_KEYS_FROM_CONFIG: KeyMappings = {
 // ALERTS_FROM_CONFIG the array of fields to accept from Kapacitor Config
 export const ALERTS_FROM_CONFIG: FieldsFromConfigAlerts = {
   alerta: ['environment', 'origin', 'token'], // token = bool
+  discord: ['workspace'],
   hipChat: ['url', 'room', 'token'], // token = bool
   kafka: ['id'],
   opsGenie: ['api-key', 'teams', 'recipients'], // api-key = bool
@@ -275,6 +279,7 @@ export const HANDLERS_TO_RULE_THEM_ALL: FieldsFromAllAlerts = {
     'origin',
     'service',
   ],
+  discord: ['username', 'avatarUrl', 'embedTitle', 'workspace'],
   hipChat: ['room'],
   kafka: ['id', 'cluster', 'kafka-topic', 'template'],
   opsGenie: ['teams', 'recipients'],

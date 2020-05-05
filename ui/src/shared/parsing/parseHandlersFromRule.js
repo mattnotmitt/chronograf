@@ -62,6 +62,19 @@ export const parseAlertNodeList = rule => {
               })
             )
             break
+            case AlertTypes.discord:
+              alerts = _.uniqBy(
+                v,
+                alert => _.get(alert, 'workspace') || 'default'
+              )
+  
+              acc.push(
+                ..._.map(alerts, alert => {
+                  const nickname = _.get(alert, 'workspace') || 'default'
+                  return `${k} (${nickname})`
+                })
+              )
+              break
           case AlertTypes.kafka:
             alerts = _.uniqBy(v, alert => _.get(alert, 'cluster'))
 

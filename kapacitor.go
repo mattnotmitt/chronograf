@@ -24,6 +24,7 @@ type AlertNodes struct {
 	OpsGenie2          []*OpsGenie  `json:"opsGenie2"`        // OpsGenie2  will send alert to all OpsGenie v2
 	Talk               []*Talk      `json:"talk"`             // Talk will send alert to all Talk
 	Kafka              []*Kafka     `json:"kafka"`            // Kafka will send alert to all Kafka
+	Discord			   []*Discord 	`json:"discord"`		  // Discord will send alert to discord webhook
 }
 
 // Post will POST alerts to a destination URL
@@ -142,6 +143,13 @@ type Kafka struct {
 	Cluster  string `json:"cluster"`
 	Topic    string `json:"kafka-topic"`
 	Template string `json:"template"`
+}
+
+// Discord sends alerts to a Discord channel webhook
+type Discord struct {
+	Username	string `json:"username"`
+	AvatarURL	string `json:"avatar-url"`
+	EmbedTitle	string `json:"embed-title"`
 }
 
 // MarshalJSON converts AlertNodes to JSON

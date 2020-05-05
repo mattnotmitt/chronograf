@@ -21,6 +21,7 @@ import {
 
 import {
   AlertaConfig,
+  DiscordConfigs,
   HipChatConfig,
   OpsGenieConfig,
   PagerDutyConfig,
@@ -76,6 +77,7 @@ interface Section {
 
 interface Sections {
   alerta: Section
+  discord: Section
   hipchat: Section
   httppost: Section
   influxdb: Section
@@ -231,6 +233,23 @@ class AlertTabs extends PureComponent<Props, State> {
             config={this.getSectionElement(configSections, AlertTypes.alerta)}
             onTest={this.handleTestConfig(AlertTypes.alerta)}
             enabled={this.getConfigEnabled(configSections, AlertTypes.alerta)}
+          />
+        )
+      case AlertTypes.discord:
+        return (
+          <DiscordConfigs
+          onSave={this.handleSaveConfig(AlertTypes.discord)}
+          configs={this.getSectionElements(configSections, AlertTypes.discord)}
+          onTest={this.handleTestConfig(AlertTypes.discord, {
+            workspace: this.getProperty(configSections, AlertTypes.discord, 'workspace'),
+          })}
+          onEnabled={this.getSpecificConfigEnabled(
+            configSections,
+            AlertTypes.discord
+          )}
+          notify={this.props.notify}
+          isMultipleConfigsSupported={this.isMultipleConfigsSupported}
+          onDelete={this.handleDeleteConfig(AlertTypes.discord)}
           />
         )
       case AlertTypes.hipchat:
@@ -431,7 +450,7 @@ class AlertTabs extends PureComponent<Props, State> {
   }
 
   private getConfigEnabled = (sections: Sections, section: string): boolean => {
-    if (section === AlertTypes.slack || section === AlertTypes.kafka) {
+    if (section === AlertTypes.slack || section === AlertTypes.kafka || AlertTypes.discord) {
       const configElements = getDeep<Section[]>(
         sections,
         `${section}.elements`,

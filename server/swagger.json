@@ -4499,6 +4499,7 @@
             "type": "string",
             "enum": [
               "alerta",
+              "discord",
               "post",
               "http",
               "hipchat",
