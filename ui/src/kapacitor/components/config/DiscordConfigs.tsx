@@ -12,15 +12,12 @@ import {getDeep} from 'src/utils/wrappers'
 const DEFAULT_CONFIG = {
   options: {
     enabled: false,
-    default: false,
     workspace: '',
     url: '',
     timestamp: true,
     username: '',
     'avatar-url': '',
     'embed-title': '',
-    global: false,
-    'state-changes-only': false,
     'ssl-ca': '',
     'ssl-cert': '',
     'ssl-key': '',
